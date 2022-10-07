@@ -105,9 +105,10 @@ public class Album {
 				numPagPlenes++;
 				numFotosUltimaPag=0;
 			}
-			if (numPagPlenes==numTotalPagines)
+			if (numPagPlenes==numTotalPagines) {
 				albumPle =  true;
 				numFotosUltimaPag = numFotosPagina;
+			}
 		}
 	}
 	
@@ -222,9 +223,9 @@ public class Album {
 		int size1 = this.getCmAlt() * this.getCmAmple();
 		int size2 = album.getCmAlt() * album.getCmAmple();
 		
-		if (size1 > size2) {
+		if (size1 < size2) {
 			return this.copia();
-		} else if (size1 < size2) {
+		} else if (size1 > size2) {
 			return album.copia();
 		} else {
 			return null;
@@ -263,6 +264,15 @@ public class Album {
 				maxPag += num;
 			}
 		}	
+	}
+
+	public boolean sonIguals(Album album) {
+
+		if ((this.nom == album.nom) && (this.cmAlt == album.cmAlt) && (this.cmAmple == album.cmAmple) && (this.numTotalPagines == album.numTotalPagines)
+			&& (this.numFotosPagina == album.numFotosPagina) && (this.numPagPlenes == album.numPagPlenes) && (this.numFotosUltimaPag == album.numFotosUltimaPag) && (this.albumPle == album.albumPle)) {
+				return true;
+		}
+		return false;
 	}
 	
 }
