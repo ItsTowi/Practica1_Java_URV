@@ -185,6 +185,9 @@ public class Album {
 	 * Treu l'ultim element afegit a l'album
 	 * */
 	public void treureFoto() {
+
+		/* Mirar els següents casos: numPagPlenes, albumPle */
+
 		numFotosUltimaPag--;
 	}
 	
@@ -266,6 +269,12 @@ public class Album {
 		}	
 	}
 
+	/**
+	 * Funció que compara dos albums i retorna cert si son iguals
+	 * 
+	 * @param album
+	 * @return Retorna si els dos albums son iguals
+	 */
 	public boolean sonIguals(Album album) {
 
 		if ((this.nom == album.nom) && (this.cmAlt == album.cmAlt) && (this.cmAmple == album.cmAmple) && (this.numTotalPagines == album.numTotalPagines)

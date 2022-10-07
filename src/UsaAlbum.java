@@ -10,31 +10,34 @@ public class UsaAlbum {
 		//Provem els albums amb els valors correctes
 
 		if (testClass(primer, "Primer album", 100, 100, 10, 10)) {
-			System.out.println("EL PRIMER ALBUM HA PASAT EL TEST");
+			System.out.println("\n EL PRIMER ALBUM HA PASAT EL TEST \n");
 		} else {
-			System.out.println("EL PRIMER ALBUM NO HA PASAT EL TEST");
+			System.out.println("\n EL PRIMER ALBUM NO HA PASAT EL TEST \n");
 		}
 
 		if (testClass(segon, "Segon album", 200, 200, 10, 10)) {
-			System.out.println("EL SEGON ALBUM HA PASAT EL TEST");
+			System.out.println("\n EL SEGON ALBUM HA PASAT EL TEST \n");
 		} else {
-			System.out.println("EL SEGON ALBUM NO HA PASAT EL TEST");
+			System.out.println("\n EL SEGON ALBUM NO HA PASAT EL TEST \n");
 		}
 
 		if (testClass(tercer, "Tercer album", 100, 100, 7, 5)) {
-			System.out.println("EL TERCER ALBUM HA PASAT EL TEST");
+			System.out.println("\n EL TERCER ALBUM HA PASAT EL TEST \n");
 		} else {
-			System.out.println("EL TERCER ALBUM NO HA PASAT EL TEST");
+			System.out.println("\n EL TERCER ALBUM NO HA PASAT EL TEST \n");
 		}
 	
 		//Provem el album tres amb els valors incorrectes
 
 		if (testClass(tercer, "Tercer album", 5, 2, 1, 1)) {
-			System.out.println("EL TERCER ALBUM HA PASAT EL TEST");
+			System.out.println("\n EL TERCER ALBUM HA PASAT EL TEST \n");
 		} else {
-			System.out.println("EL TERCER ALBUM NO HA PASAT EL TEST");
+			System.out.println("\n EL TERCER ALBUM NO HA PASAT EL TEST \n");
 		}
+
+		// Provem els nou mètodes implementats
 		
+		testMethods(primer);
 
 		primer.treureFoto();
 		if (primer.teMesLliure(segon)) {
@@ -61,7 +64,7 @@ public class UsaAlbum {
 
 		// Imprimim l'estat inical del album
 		
-		System.out.println(album.toString() + "\n");
+		System.out.println("\n" + album.toString() + "\n");
 		
 		// Test getNom
 		
@@ -212,5 +215,28 @@ public class UsaAlbum {
 			return false;
 		}
 
+	}
+
+	public boolean testMethods(Album album) {
+
+		int fotosActuals;
+		int correctes = 0;
+
+		fotosActuals = album.getNumTotalFotosPosades();
+		
+		album.treureFoto();
+
+		if (fotosActuals - 1 == album.getNumTotalFotosPosades()) {
+			System.out.println("S'ha tret correctament la foto");
+			correctes++;
+		} else {
+			System.out.println("No s'ha tret correctament la foto");
+		}
+
+		if (correctes == 1) {
+			return true;
+		} else {
+			return false;
+		}
 	}
 }
