@@ -109,6 +109,8 @@ public class Album {
 				albumPle =  true;
 				numFotosUltimaPag = numFotosPagina;
 			}
+		} else {
+			System.out.println("El album esta ple");
 		}
 	}
 	
@@ -188,7 +190,23 @@ public class Album {
 
 		/* Mirar els següents casos: numPagPlenes, albumPle */
 
-		numFotosUltimaPag--;
+
+		if (albumPle) {
+			numFotosUltimaPag--;
+			numPagPlenes--;
+			albumPle = false;
+		} else if (numFotosPagina == numFotosUltimaPag) {
+			numFotosUltimaPag--;
+			numPagPlenes--;
+		} else if (numPagPlenes == 0) {
+			System.out.println("No pots treure fotos a un album buit");
+		} else {
+			numFotosUltimaPag--;
+		}
+		
+
+		
+		
 	}
 	
 	/**
@@ -282,6 +300,18 @@ public class Album {
 				return true;
 		}
 		return false;
+	}
+
+
+	/**
+	 * Funció que buida tot l'album
+	 * 
+	 * 
+	 */
+	public void buidaAlbum() {
+		this.numPagPlenes = 0;
+		this.numFotosUltimaPag = 0;
+		this.albumPle = false;
 	}
 	
 }

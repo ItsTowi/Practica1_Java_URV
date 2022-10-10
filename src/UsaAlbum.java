@@ -26,6 +26,8 @@ public class UsaAlbum {
 		} else {
 			System.out.println("\n EL TERCER ALBUM NO HA PASAT EL TEST \n");
 		}
+
+		tercer.buidaAlbum();
 	
 		//Provem el album tres amb els valors incorrectes
 
@@ -39,18 +41,11 @@ public class UsaAlbum {
 		
 		testMethods(primer);
 
-		primer.treureFoto();
-		if (primer.teMesLliure(segon)) {
-			primer.afegirFoto();
-		} else {
-			segon.afegirFoto();
-		}
-		Album mesPetit = primer.elMesPetit(tercer);
-		if (mesPetit != null){
-			System.out.println("El mes petit es " + mesPetit.getNom());
-		} else {
-			System.out.println ("Els dos albums tenen la mateixa mida.");
-		}
+		segon.buidaAlbum();
+
+		testMethods(segon);
+
+		testMethods(tercer);
 
 
 	}
@@ -217,10 +212,11 @@ public class UsaAlbum {
 
 	}
 
-	public boolean testMethods(Album album) {
+	public static void testMethods(Album album) {
 
 		int fotosActuals;
-		int correctes = 0;
+
+		Album test = new Album("Test methods", 10, 10, 10, 10);
 
 		fotosActuals = album.getNumTotalFotosPosades();
 		
@@ -228,15 +224,24 @@ public class UsaAlbum {
 
 		if (fotosActuals - 1 == album.getNumTotalFotosPosades()) {
 			System.out.println("S'ha tret correctament la foto");
-			correctes++;
 		} else {
 			System.out.println("No s'ha tret correctament la foto");
 		}
 
-		if (correctes == 1) {
-			return true;
+		album.afegirFoto();
+
+		if (album.teMesLliure(test)) {
+			album.afegirFoto();
 		} else {
-			return false;
+			test.afegirFoto();
+		}
+
+		Album mesPetit = album.elMesPetit(test);
+
+		if (mesPetit != null){
+			System.out.println("El mes petit es " + mesPetit.getNom());
+		} else {
+			System.out.println ("Els dos albums tenen la mateixa mida.");
 		}
 	}
 }
